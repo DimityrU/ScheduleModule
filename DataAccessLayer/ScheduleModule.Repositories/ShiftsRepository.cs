@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ScheduleModule.Repositories.Entities;
-using ScheduleModule.Repositories.Interfaces;
+using ScheduleModule.Repositories.Shared;
 
 namespace ScheduleModule.Repositories;
 

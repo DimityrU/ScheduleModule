@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ScheduleModule.DomainModels\ScheduleModule.DomainModels.csproj" />
+    <ProjectReference Include="..\ScheduleModule.Repositories.Shared\ScheduleModule.Repositories.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

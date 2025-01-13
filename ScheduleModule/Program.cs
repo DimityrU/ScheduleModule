@@ -2,8 +2,8 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ScheduleModule.Repositories;
 using ScheduleModule.Repositories.Entities;
-using ScheduleModule.Repositories.Interfaces;
 using ScheduleModule.Repositories.MapperProfiles;
+using ScheduleModule.Repositories.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ScheduleModule.Services.Dto\ScheduleModule.Services.Dto.csproj" />
-    <ProjectReference Include="..\ScheduleModule.Services\ScheduleModule.Services.csproj" />
   </ItemGroup>
 
 </Project>

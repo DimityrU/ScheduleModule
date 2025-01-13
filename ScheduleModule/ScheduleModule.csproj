@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApplicationLayer\ScheduleModule.Services.Dto\ScheduleModule.Services.Dto.csproj" />
-    <ProjectReference Include="..\ApplicationLayer\ScheduleModule.Services.Shared\ScheduleModule.Services.Shared.csproj" />
+    <ProjectReference Include="..\ApplicationLayer\ScheduleModule.Services\ScheduleModule.Services.csproj" />
+    <ProjectReference Include="..\DataAccessLayer\ScheduleModule.Repositories\ScheduleModule.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

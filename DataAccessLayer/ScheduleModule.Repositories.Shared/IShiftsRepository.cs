@@ -1,6 +1,6 @@
 ﻿using ScheduleModule.DomainModels;
 
-namespace ScheduleModule.Repositories.Interfaces;
+namespace ScheduleModule.Repositories.Shared;
 
 public interface IShiftsRepository
 {
