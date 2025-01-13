@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataAccessLayer\ScheduleModule.Repositories.Shared\ScheduleModule.Repositories.Shared.csproj" />
+    <ProjectReference Include="..\..\ScheduleModule.DomainModels\ScheduleModule.DomainModels.csproj" />
+    <ProjectReference Include="..\ScheduleModule.Services.Dto\ScheduleModule.Services.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

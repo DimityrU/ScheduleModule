@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule", "ScheduleModule\ScheduleModule.csproj", "{EBC079C8-D72B-4ECF-A685-E1566585504A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationLayer", "ApplicationLayer", "{D5A07274-0B4B-4F71-B798-80BD7313C8ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Services.Shared", "ApplicationLayer\ScheduleModule.Services.Shared\ScheduleModule.Services.Shared.csproj", "{46834729-4119-4A17-81C1-640D2C12AE1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Services", "ApplicationLayer\ScheduleModule.Services\ScheduleModule.Services.csproj", "{D9A167D8-39FD-483D-811A-C9D107CBD971}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Services.Dto", "ApplicationLayer\ScheduleModule.Services.Dto\ScheduleModule.Services.Dto.csproj", "{7E4CB083-CEBA-4A28-BC48-098BB7A6EC5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Repositories.Shared", "DataAccessLayer\ScheduleModule.Repositories.Shared\ScheduleModule.Repositories.Shared.csproj", "{D398CEFE-3B04-44D6-B525-8B7D279BCE63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAccessLayer", "{B22C3C58-098B-4FF5-8601-3B9383672F8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Repositories", "DataAccessLayer\ScheduleModule.Repositories\ScheduleModule.Repositories.csproj", "{004F8B4F-C322-4840-BE31-A6E589218F8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.DomainModels", "ScheduleModule.DomainModels\ScheduleModule.DomainModels.csproj", "{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLMigrationScripts", "SQLMigrationScripts", "{24573AAE-2DBF-4D46-8F83-6BB0FED4DFD3}"
+	ProjectSection(SolutionItems) = preProject
+		01.FourthEmployeesSchedule_Schema.sql = 01.FourthEmployeesSchedule_Schema.sql
+		02.FourthEmployeesSchedule_Data.sql = 02.FourthEmployeesSchedule_Data.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBC079C8-D72B-4ECF-A685-E1566585504A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC079C8-D72B-4ECF-A685-E1566585504A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC079C8-D72B-4ECF-A685-E1566585504A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC079C8-D72B-4ECF-A685-E1566585504A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46834729-4119-4A17-81C1-640D2C12AE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46834729-4119-4A17-81C1-640D2C12AE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46834729-4119-4A17-81C1-640D2C12AE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46834729-4119-4A17-81C1-640D2C12AE1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9A167D8-39FD-483D-811A-C9D107CBD971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9A167D8-39FD-483D-811A-C9D107CBD971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9A167D8-39FD-483D-811A-C9D107CBD971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9A167D8-39FD-483D-811A-C9D107CBD971}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4CB083-CEBA-4A28-BC48-098BB7A6EC5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4CB083-CEBA-4A28-BC48-098BB7A6EC5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4CB083-CEBA-4A28-BC48-098BB7A6EC5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4CB083-CEBA-4A28-BC48-098BB7A6EC5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D398CEFE-3B04-44D6-B525-8B7D279BCE63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D398CEFE-3B04-44D6-B525-8B7D279BCE63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D398CEFE-3B04-44D6-B525-8B7D279BCE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D398CEFE-3B04-44D6-B525-8B7D279BCE63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{004F8B4F-C322-4840-BE31-A6E589218F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004F8B4F-C322-4840-BE31-A6E589218F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004F8B4F-C322-4840-BE31-A6E589218F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004F8B4F-C322-4840-BE31-A6E589218F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46834729-4119-4A17-81C1-640D2C12AE1D} = {D5A07274-0B4B-4F71-B798-80BD7313C8ED}
+		{D9A167D8-39FD-483D-811A-C9D107CBD971} = {D5A07274-0B4B-4F71-B798-80BD7313C8ED}
+		{7E4CB083-CEBA-4A28-BC48-098BB7A6EC5F} = {D5A07274-0B4B-4F71-B798-80BD7313C8ED}
+		{D398CEFE-3B04-44D6-B525-8B7D279BCE63} = {B22C3C58-098B-4FF5-8601-3B9383672F8F}
+		{004F8B4F-C322-4840-BE31-A6E589218F8A} = {B22C3C58-098B-4FF5-8601-3B9383672F8F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7460BF09-13B3-4221-9B7C-89FF4C513DBE}
+	EndGlobalSection
+EndGlobal
