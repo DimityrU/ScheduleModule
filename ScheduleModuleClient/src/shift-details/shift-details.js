@@ -30,8 +30,8 @@ fetchRoles().then(res => {
   });
 });
 
-document.getElementById('startHour').value = shift.startHour || '10:00';
-document.getElementById('endHour').value = shift.endHour || '16:00';
+document.getElementById('startHour').value = shift.startHour || '07:00';
+document.getElementById('endHour').value = shift.endHour || '23:00';
 
 document.getElementById('backButton').addEventListener('click', (event) => {  
     window.location.href = '../schedule-grid/schedule-grid.html';

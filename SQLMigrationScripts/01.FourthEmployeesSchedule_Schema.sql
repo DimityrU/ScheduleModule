@@ -70,8 +70,7 @@ BEGIN
     JOIN Roles ro ON r.RoleId = ro.RoleId
     WHERE 
         s.Date >= @FirstDateOfTheWeek 
-        AND s.Date < DATEADD(DAY, 7, @FirstDateOfTheWeek)
-        AND (@EmployeeId IS NULL OR e.EmployeeId = @EmployeeId);
+        AND s.Date < DATEADD(DAY, 7, @FirstDateOfTheWeek);
 END;
 GO
 

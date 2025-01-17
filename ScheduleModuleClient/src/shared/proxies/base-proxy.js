@@ -102,7 +102,7 @@ class BaseProxy {
     async handleResponse(response) {
         const data = await response.json();
         if (data.hasError) {
-            console.error('API Error:', data);
+            alert('API Error:', data);
             throw new Error(data.errorMessage || 'Something went wrong!');
         }
         return data;

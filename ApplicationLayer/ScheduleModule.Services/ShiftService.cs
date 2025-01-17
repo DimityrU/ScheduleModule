@@ -54,9 +54,13 @@ public class ShiftService(IShiftsRepository shiftsRepository,
 
         //Overlapping shifts validation
 
-        //hour check
+        if (shift.StartHour > shift.EndHour)
+        {
+            response.AddError("Start hour must be before end hour");
+            return response;
+        }
 
-        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(request.Shift.EmployeeId, request.Shift.RoleId);
+        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(shift.EmployeeId, request.Shift.RoleId);
 
         if (roleToEmployeeId == Guid.Empty)
         {
@@ -83,11 +87,15 @@ public class ShiftService(IShiftsRepository shiftsRepository,
         }
         var shift = mapper.Map<ShiftEmployee>(request.Shift);
 
+        if (shift.StartHour > shift.EndHour)
+        {
+            response.AddError("Start hour must be before end hour");
+            return response;
+        }
+
         //Overlapping shifts validation
 
-        //hour check
-
-        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(request.Shift.EmployeeId, request.Shift.RoleId);
+        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(shift.EmployeeId, request.Shift.RoleId);
 
         if (roleToEmployeeId == Guid.Empty)
         {
