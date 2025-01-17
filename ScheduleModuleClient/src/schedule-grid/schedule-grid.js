@@ -1,4 +1,4 @@
-import { getMondayOfCurrentWeek, getWeekDates, formatDate } from '../shared/date-helpers.js';
+import { getMondayOfCurrentWeek, getWeekDates, deserializeDate, deserializeTime } from '../shared/date-time-formatters.js';
 import BaseProxy from '../shared/proxies/base-proxy.js';
 
 let currentMonday = getMondayOfCurrentWeek();
@@ -22,7 +22,7 @@ function createTable() {
   dates.forEach(date => {
     const th = document.createElement("th");
     th.classList.add("text-center", "align-middle");
-    th.textContent = formatDate(date);
+    th.textContent = deserializeDate(date);
     headerRow.appendChild(th);
   });
 
@@ -58,14 +58,17 @@ function createTable() {
 
           cell.appendChild(addShiftButton);
 
-
           const workDay = employee.workDays.find(day => day.date === date);
           if (workDay) {
             workDay.shifts.forEach(shift => {
-              const shiftFormatted = `${shift.roleName}: ${shift.startHour.substring(0, 5)} - ${shift.endHour.substring(0, 5)}`;
+
+              let startHour = deserializeTime(shift.startHour);
+              let endHour = deserializeTime(shift.endHour);
+
+              const shiftFormatted = `${shift.roleName}: ${startHour} - ${endHour}`;
 
               const shiftElement = document.createElement("div");
-              shiftElement.innerHTML = `<a href="../shift-details/shift-details.html?id=${shift.shiftId}&employeeId=${employee.employeeId}&employeeName=${employee.fullName}&roleName=${shift.roleName}&date=${date}&startHour=${shift.startHour}&endHour=${shift.endHour}" class="shift-link">${shiftFormatted}</a>`;
+              shiftElement.innerHTML = `<a href="../shift-details/shift-details.html?shiftId=${shift.shiftId}&employeeId=${employee.employeeId}&employeeName=${employee.fullName}&roleName=${shift.roleName}&date=${date}&startHour=${startHour}&endHour=${endHour}" class="shift-link">${shiftFormatted}</a>`;
               cell.appendChild(shiftElement);
             });
           }

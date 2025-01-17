@@ -1,13 +1,4 @@
-export function formatDate(dateString) {
-    const date = new Date(dateString);
-  
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-  
-    return `${day}.${month}.${year}`;
-  }
-  
+
   export function getWeekDates(mondayDate) {
     const dates = [];
     const monday = new Date(mondayDate);
@@ -30,4 +21,27 @@ export function formatDate(dateString) {
     const dayOfMonth = monday.getDate().toString().padStart(2, '0');
     
     return `${year}-${month}-${dayOfMonth}`;
+}
+
+export function serializeTime(time) {
+  return `${time}:00`;
+}
+
+export function deserializeTime(time) {
+  return time.substring(0, 5);
+}
+
+export function serializeDate(dateString) {
+  const [day, month, year] = dateString.split('.');
+  return `${year}-${month}-${day}`;
+}
+
+export function deserializeDate(dateString) {
+  const date = new Date(dateString);
+
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+
+  return `${day}.${month}.${year}`;
 }

@@ -7,9 +7,11 @@ namespace ScheduleModule.Repositories;
 
 public class ShiftsRepository(ScheduleContext context, IMapper mapper) : IShiftsRepository
 {
-    public async Task<DomainModels.Shift> AddShift(DomainModels.Shift shift)
+    public async Task<DomainModels.Shift> AddShift(DomainModels.ShiftEmployee shift, Guid roleToEmployee)
     {
         var entity = mapper.Map<Shift>(shift);
+
+        entity.RolesToEmployeeId = roleToEmployee;
 
         context.Shifts.Add(entity);
         await context.SaveChangesAsync();
@@ -29,9 +31,10 @@ public class ShiftsRepository(ScheduleContext context, IMapper mapper) : IShifts
         return mapper.Map<IEnumerable<DomainModels.ShiftEmployee>>(shifts);
     }
 
-    public async Task<DomainModels.Shift> UpdateShift(DomainModels.Shift shift, Guid roleToEmployee)
+    public async Task<DomainModels.Shift> UpdateShift(DomainModels.ShiftEmployee shift, Guid roleToEmployee)
     {
         await context.Shifts
+            .Where(entity => entity.ShiftId == shift.ShiftId)
             .ExecuteUpdateAsync(entity => entity
                 .SetProperty(prop => prop.RolesToEmployeeId, roleToEmployee)
                 .SetProperty(prop => prop.StartHour, shift.StartHour)

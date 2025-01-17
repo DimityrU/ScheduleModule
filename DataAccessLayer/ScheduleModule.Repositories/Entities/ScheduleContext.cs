@@ -25,7 +25,7 @@ public partial class ScheduleContext : DbContext
     {
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.Property(e => e.EmployeeId).ValueGeneratedNever();
+            entity.Property(e => e.EmployeeId).HasDefaultValueSql("(newid())");
         });
 
         modelBuilder.Entity<Role>(entity =>
@@ -48,7 +48,7 @@ public partial class ScheduleContext : DbContext
 
         modelBuilder.Entity<Shift>(entity =>
         {
-            entity.Property(e => e.ShiftId).ValueGeneratedNever();
+            entity.Property(e => e.ShiftId).HasDefaultValueSql("(newid())");
 
             entity.HasOne(d => d.RolesToEmployee).WithMany(p => p.Shifts)
                 .OnDelete(DeleteBehavior.ClientSetNull)

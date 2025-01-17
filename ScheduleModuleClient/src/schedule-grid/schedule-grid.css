@@ -7,14 +7,10 @@
 
 .shift-link {
   color: #007bff;
+  font-size: 14px;
   text-decoration: none;
 }
 
 .shift-link:hover {
   text-decoration: underline;
 }
-
-.add-shift-btn {
-  align-self: flex-start; /* Align button to the left */
-}
-

@@ -18,4 +18,14 @@ public class RolesRepository(ScheduleContext context, IMapper mapper) : IRolesRe
 
         return mapper.Map<IEnumerable<Role>>(roles);
     }
+
+    public async Task<Guid> GetRolesToEmployeesId(Guid employeeId, Guid roleId)
+    {
+        var roleToEmployeeId = await context.RolesToEmployees
+            .Where(r => r.EmployeeId == employeeId && r.RoleId == roleId)
+            .Select(r => r.RolesToEmployeeId)
+            .FirstOrDefaultAsync();
+
+        return roleToEmployeeId;
+    }
 }

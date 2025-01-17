@@ -13,6 +13,8 @@ public class ShiftDTOProfile : Profile
         CreateMap<WorkDayDTO, WorkDay>().ReverseMap();
 
         CreateMap<EmployeeDTO, Employee>().ReverseMap();
+
+        CreateMap<ShiftEmployee, SaveShiftDTO>().ReverseMap();
     }
 
 }

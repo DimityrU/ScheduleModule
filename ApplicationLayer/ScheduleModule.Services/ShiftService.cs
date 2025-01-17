@@ -2,12 +2,16 @@
 using ScheduleModule.DomainModels;
 using ScheduleModule.Repositories.Shared;
 using ScheduleModule.Services.Dto.DTOs;
+using ScheduleModule.Services.Dto.Incoming;
 using ScheduleModule.Services.Dto.Outgoing;
 using ScheduleModule.Services.Shared;
 
 namespace ScheduleModule.Services;
 
-public class ShiftService(IShiftsRepository shiftsRepository, IEmployeesRepository employeesRepository, IMapper mapper) : IShiftService
+public class ShiftService(IShiftsRepository shiftsRepository, 
+    IEmployeesRepository employeesRepository,
+    IRolesRepository rolesRepository,
+    IMapper mapper) : IShiftService
 {
     public async Task<GetEmployeeShiftsResponse> GetEmployeeShifts(DateOnly date)
     {
@@ -32,6 +36,68 @@ public class ShiftService(IShiftsRepository shiftsRepository, IEmployeesReposito
         }
 
         response.Employees = mapper.Map<List<EmployeeDTO>>(employeesWithShifts);
+
+        return response;
+    }
+
+    public async Task<SaveShiftResponse> SaveShift(SaveShiftRequest request)
+    {
+        var response = new SaveShiftResponse();
+
+        if (request.Shift.EmployeeId == Guid.Empty ||
+            request.Shift.RoleId == Guid.Empty)
+        {
+            response.AddError("Invalid request");
+            return response;
+        }
+        var shift = mapper.Map<ShiftEmployee>(request.Shift);
+
+        //Overlapping shifts validation
+
+        //hour check
+
+        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(request.Shift.EmployeeId, request.Shift.RoleId);
+
+        if (roleToEmployeeId == Guid.Empty)
+        {
+            response.AddError("Invalid Role for this employee");
+            return response;
+        }
+
+        var savedShift = await shiftsRepository.AddShift(shift, roleToEmployeeId);
+
+        response.Shift = mapper.Map<ShiftDTO>(savedShift);
+
+        return response;
+    }
+
+    public async Task<SaveShiftResponse> EditShift(SaveShiftRequest request)
+    {
+        var response = new SaveShiftResponse();
+
+        if (request.Shift.EmployeeId == Guid.Empty || request.Shift.ShiftId == Guid.Empty ||
+            request.Shift.RoleId == Guid.Empty)
+        {
+            response.AddError("Invalid request");
+            return response;
+        }
+        var shift = mapper.Map<ShiftEmployee>(request.Shift);
+
+        //Overlapping shifts validation
+
+        //hour check
+
+        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(request.Shift.EmployeeId, request.Shift.RoleId);
+
+        if (roleToEmployeeId == Guid.Empty)
+        {
+            response.AddError("Invalid Role for this employee");
+            return response;
+        }
+
+        var savedShift = await shiftsRepository.UpdateShift(shift, roleToEmployeeId);
+
+        response.Shift = mapper.Map<ShiftDTO>(savedShift);
 
         return response;
     }

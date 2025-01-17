@@ -9,7 +9,7 @@ GO
 PRINT 'Creating table Employees...';
 GO
 CREATE TABLE dbo.Employees (
-    EmployeeId UNIQUEIDENTIFIER NOT NULL,
+    EmployeeId UNIQUEIDENTIFIER NOT NULL DEFAULT (NEWID()),
     FirstName NVARCHAR(50) NULL,
     LastName NVARCHAR(50) NULL,
     CONSTRAINT PK_Employees PRIMARY KEY (EmployeeId)
@@ -19,7 +19,7 @@ GO
 PRINT 'Creating table Roles...';
 GO
 CREATE TABLE dbo.Roles (
-    RoleId UNIQUEIDENTIFIER NOT NULL,
+    RoleId UNIQUEIDENTIFIER NOT NULL  DEFAULT (NEWID()),
     RoleName NVARCHAR(50) NOT NULL,
     CONSTRAINT PK_Roles PRIMARY KEY (RoleId)
 );
@@ -28,7 +28,7 @@ GO
 PRINT 'Creating table RolesToEmployees...';
 GO
 CREATE TABLE dbo.RolesToEmployees (
-    RolesToEmployeeId UNIQUEIDENTIFIER NOT NULL,
+    RolesToEmployeeId UNIQUEIDENTIFIER NOT NULL  DEFAULT (NEWID()),
     EmployeeId UNIQUEIDENTIFIER NOT NULL,
     RoleId UNIQUEIDENTIFIER NOT NULL,
     CONSTRAINT PK_RolesToEmployees PRIMARY KEY (RolesToEmployeeId),
@@ -40,7 +40,7 @@ GO
 PRINT 'Creating table Shifts...';
 GO
 CREATE TABLE dbo.Shifts (
-    ShiftId UNIQUEIDENTIFIER NOT NULL,
+    ShiftId UNIQUEIDENTIFIER NOT NULL  DEFAULT (NEWID()),
     RolesToEmployeeId UNIQUEIDENTIFIER NOT NULL,
     Date DATE NULL,
     StartHour TIME(7) NOT NULL,
