@@ -24,7 +24,7 @@ public class ShiftsRepository(ScheduleContext context, IMapper mapper) : IShifts
 
     public async Task<IEnumerable<DomainModels.Shift>> GetEmployeeShifts(DateOnly date, Guid? employeeId)
     {
-        var shifts = await context.Procedures.spGetShiftsForWeekAsync(date, employeeId);
+        var shifts = await context.Procedures.uspGetShiftsForWeekAsync(date);
 
         return mapper.Map<IEnumerable<DomainModels.Shift>>(shifts);
     }

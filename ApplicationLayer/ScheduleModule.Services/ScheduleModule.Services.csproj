@@ -10,6 +10,7 @@
     <ProjectReference Include="..\..\DataAccessLayer\ScheduleModule.Repositories.Shared\ScheduleModule.Repositories.Shared.csproj" />
     <ProjectReference Include="..\..\ScheduleModule.DomainModels\ScheduleModule.DomainModels.csproj" />
     <ProjectReference Include="..\ScheduleModule.Services.Dto\ScheduleModule.Services.Dto.csproj" />
+    <ProjectReference Include="..\ScheduleModule.Services.Shared\ScheduleModule.Services.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,29 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule", "ScheduleModule\ScheduleModule.csproj", "{EBC079C8-D72B-4ECF-A685-E1566585504A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule", "ScheduleModule\ScheduleModule.csproj", "{EBC079C8-D72B-4ECF-A685-E1566585504A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationLayer", "ApplicationLayer", "{D5A07274-0B4B-4F71-B798-80BD7313C8ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Services.Shared", "ApplicationLayer\ScheduleModule.Services.Shared\ScheduleModule.Services.Shared.csproj", "{46834729-4119-4A17-81C1-640D2C12AE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule.Services.Shared", "ApplicationLayer\ScheduleModule.Services.Shared\ScheduleModule.Services.Shared.csproj", "{46834729-4119-4A17-81C1-640D2C12AE1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Services", "ApplicationLayer\ScheduleModule.Services\ScheduleModule.Services.csproj", "{D9A167D8-39FD-483D-811A-C9D107CBD971}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule.Services", "ApplicationLayer\ScheduleModule.Services\ScheduleModule.Services.csproj", "{D9A167D8-39FD-483D-811A-C9D107CBD971}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Services.Dto", "ApplicationLayer\ScheduleModule.Services.Dto\ScheduleModule.Services.Dto.csproj", "{7E4CB083-CEBA-4A28-BC48-098BB7A6EC5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule.Services.Dto", "ApplicationLayer\ScheduleModule.Services.Dto\ScheduleModule.Services.Dto.csproj", "{7E4CB083-CEBA-4A28-BC48-098BB7A6EC5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Repositories.Shared", "DataAccessLayer\ScheduleModule.Repositories.Shared\ScheduleModule.Repositories.Shared.csproj", "{D398CEFE-3B04-44D6-B525-8B7D279BCE63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule.Repositories.Shared", "DataAccessLayer\ScheduleModule.Repositories.Shared\ScheduleModule.Repositories.Shared.csproj", "{D398CEFE-3B04-44D6-B525-8B7D279BCE63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAccessLayer", "{B22C3C58-098B-4FF5-8601-3B9383672F8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.Repositories", "DataAccessLayer\ScheduleModule.Repositories\ScheduleModule.Repositories.csproj", "{004F8B4F-C322-4840-BE31-A6E589218F8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule.Repositories", "DataAccessLayer\ScheduleModule.Repositories\ScheduleModule.Repositories.csproj", "{004F8B4F-C322-4840-BE31-A6E589218F8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleModule.DomainModels", "ScheduleModule.DomainModels\ScheduleModule.DomainModels.csproj", "{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule.DomainModels", "ScheduleModule.DomainModels\ScheduleModule.DomainModels.csproj", "{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLMigrationScripts", "SQLMigrationScripts", "{24573AAE-2DBF-4D46-8F83-6BB0FED4DFD3}"
 	ProjectSection(SolutionItems) = preProject
 		01.FourthEmployeesSchedule_Schema.sql = 01.FourthEmployeesSchedule_Schema.sql
 		02.FourthEmployeesSchedule_Data.sql = 02.FourthEmployeesSchedule_Data.sql
 	EndProjectSection
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ScheduleModuleClient", "ScheduleModuleClient\ScheduleModuleClient.esproj", "{32B5D6D4-656F-4B22-B788-8D68A0F94DCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,12 @@ Global
 		{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B5D6D4-656F-4B22-B788-8D68A0F94DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B5D6D4-656F-4B22-B788-8D68A0F94DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B5D6D4-656F-4B22-B788-8D68A0F94DCF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{32B5D6D4-656F-4B22-B788-8D68A0F94DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B5D6D4-656F-4B22-B788-8D68A0F94DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B5D6D4-656F-4B22-B788-8D68A0F94DCF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

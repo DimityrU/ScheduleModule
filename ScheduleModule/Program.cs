@@ -4,6 +4,9 @@ using ScheduleModule.Repositories;
 using ScheduleModule.Repositories.Entities;
 using ScheduleModule.Repositories.MapperProfiles;
 using ScheduleModule.Repositories.Shared;
+using ScheduleModule.Services;
+using ScheduleModule.Services.MapperProfiles;
+using ScheduleModule.Services.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,9 +18,11 @@ builder.Services.AddDbContext<ScheduleContext>(options =>
 });
 
 builder.Services.AddScoped<IShiftsRepository, ShiftsRepository>();
+builder.Services.AddScoped<IShiftService, ShiftService>();
 
 var config = new MapperConfiguration(c => {
     c.AddProfile<ShiftProfile>();
+    c.AddProfile<ShiftDTOProfile>();
 });
 
 builder.Services.AddSingleton<IMapper>(_ => config.CreateMapper());
@@ -27,16 +32,34 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAnyOrigin", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
 }
 
+
+
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAnyOrigin");
+
 
 app.UseAuthorization();
 

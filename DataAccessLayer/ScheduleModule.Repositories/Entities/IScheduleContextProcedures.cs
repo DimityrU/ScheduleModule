@@ -12,6 +12,6 @@ namespace ScheduleModule.Repositories.Entities
 {
     public partial interface IScheduleContextProcedures
     {
-        Task<List<spGetShiftsForWeekResult>> spGetShiftsForWeekAsync(DateOnly? FirstDateOfTheWeek, Guid? EmployeeId, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<uspGetShiftsForWeekResult>> uspGetShiftsForWeekAsync(DateOnly? FirstDateOfTheWeek, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
     }
 }

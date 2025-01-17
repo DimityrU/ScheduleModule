@@ -34,7 +34,7 @@ namespace ScheduleModule.Repositories.Entities
 
         protected void OnModelCreatingGeneratedProcedures(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<spGetShiftsForWeekResult>().HasNoKey().ToView(null);
+            modelBuilder.Entity<uspGetShiftsForWeekResult>().HasNoKey().ToView(null);
         }
     }
 
@@ -47,7 +47,7 @@ namespace ScheduleModule.Repositories.Entities
             _context = context;
         }
 
-        public virtual async Task<List<spGetShiftsForWeekResult>> spGetShiftsForWeekAsync(DateOnly? FirstDateOfTheWeek, Guid? EmployeeId, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<uspGetShiftsForWeekResult>> uspGetShiftsForWeekAsync(DateOnly? FirstDateOfTheWeek, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -64,15 +64,9 @@ namespace ScheduleModule.Repositories.Entities
                     Value = FirstDateOfTheWeek ?? Convert.DBNull,
                     SqlDbType = System.Data.SqlDbType.Date,
                 },
-                new SqlParameter
-                {
-                    ParameterName = "EmployeeId",
-                    Value = EmployeeId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.UniqueIdentifier,
-                },
                 parameterreturnValue,
             };
-            var _ = await _context.SqlQueryAsync<spGetShiftsForWeekResult>("EXEC @returnValue = [dbo].[spGetShiftsForWeek] @FirstDateOfTheWeek, @EmployeeId", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<uspGetShiftsForWeekResult>("EXEC @returnValue = [dbo].[uspGetShiftsForWeek] @FirstDateOfTheWeek", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 

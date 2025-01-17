@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScheduleModule.Repositories.Entities
 {
-    public partial class spGetShiftsForWeekResult
+    public partial class uspGetShiftsForWeekResult
     {
-        public Guid ShiftId { get; set; }
-        public DateOnly? Date { get; set; }
+        public Guid EmployeeId { get; set; }
         public string FullName { get; set; }
+        public DateOnly? Date { get; set; }
+        public Guid ShiftId { get; set; }
         public string RoleName { get; set; }
         public TimeOnly StartHour { get; set; }
         public TimeOnly EndHour { get; set; }
