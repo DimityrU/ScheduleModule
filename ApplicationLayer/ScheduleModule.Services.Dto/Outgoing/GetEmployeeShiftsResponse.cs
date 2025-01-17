@@ -2,7 +2,7 @@
 
 namespace ScheduleModule.Services.Dto.Outgoing
 {
-    public class GetEmployeeShifts : BaseResponse
+    public class GetEmployeeShiftsResponse : BaseResponse
     {
         public List<EmployeeDTO> Employees { get; set; }
     }

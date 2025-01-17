@@ -9,9 +9,9 @@ namespace ScheduleModule.Services;
 
 public class ShiftService(IShiftsRepository shiftsRepository, IMapper mapper) : IShiftService
 {
-    public async Task<GetEmployeeShifts> GetEmployeeShifts(DateOnly date)
+    public async Task<GetEmployeeShiftsResponse> GetEmployeeShifts(DateOnly date)
     {
-        var response = new GetEmployeeShifts();
+        var response = new GetEmployeeShiftsResponse();
 
         if (date.DayOfWeek != DayOfWeek.Monday)
         {
@@ -21,24 +21,26 @@ public class ShiftService(IShiftsRepository shiftsRepository, IMapper mapper) : 
 
         var shifts = await shiftsRepository.GetEmployeeShifts(date, null);
 
-        var employees = shifts
-            .GroupBy(shiftEmployee => new ShiftEmployee
-            {
-                EmployeeId = shiftEmployee.EmployeeId, 
-                FullName = shiftEmployee.FullName 
-            })
-            .Select(group => new Employee
+        var employees = GroupShiftsByEmployee(shifts);
+
+        response.Employees = mapper.Map<List<EmployeeDTO>>(employees);
+
+        return response;
+    }
+
+    private static IEnumerable<Employee> GroupShiftsByEmployee(IEnumerable<ShiftEmployee> shifts)
+    {
+        return shifts
+            .GroupBy(shift => new { shift.EmployeeId, shift.FullName })
+            .Select(group => new Employee()
             {
                 FullName = group.Key.FullName,
                 EmployeeId = group.Key.EmployeeId,
                 WorkDays = group
-                    .GroupBy(g => new ShiftsDate
-                    {
-                        Date = g.Date
-                    })
+                    .GroupBy(g => g.Date)
                     .Select(workDay => new WorkDay
                     {
-                        Date = workDay.Key.Date,
+                        Date = workDay.Key,
                         Shifts = workDay.Select(shift => new Shift
                         {
                             ShiftId = shift.ShiftId,
@@ -47,10 +49,6 @@ public class ShiftService(IShiftsRepository shiftsRepository, IMapper mapper) : 
                             EndHour = shift.EndHour
                         }).ToList()
                     }).ToList()
-            }).ToList();
-
-        response.Employees = mapper.Map<List<EmployeeDTO>>(employees);
-
-        return response;
+            });
     }
 }

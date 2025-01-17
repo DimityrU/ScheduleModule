@@ -9,7 +9,7 @@ namespace ScheduleModule.Controllers
     public class ShiftController(IShiftService shiftService) : ControllerBase
     {
         [HttpGet("GetEmployeeShifts/{date}")]
-        public Task<GetEmployeeShifts> GetEmployeeShifts(DateOnly date)
+        public Task<GetEmployeeShiftsResponse> GetEmployeeShifts(DateOnly date)
         {
             var result = shiftService.GetEmployeeShifts(date);
 
