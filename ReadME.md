@@ -10,6 +10,8 @@ Ensure you have the following installed:
 
 - [.NET SDK](https://dotnet.microsoft.com/download) (Version 8.0 or later recommended)
 - [Node.js](https://nodejs.org/en/download/) (Version 14.0 or later recommended)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (Version 2019 or later recommended)
+- [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) (Version 18.0 or later recommended)
 
 ---
 
