@@ -9,6 +9,7 @@ This is a .NET-based API project. This README provides instructions on how to se
 Ensure you have the following installed:
 
 - [.NET SDK](https://dotnet.microsoft.com/download) (Version 8.0 or later recommended)
+- [Node.js](https://nodejs.org/en/download/) (Version 14.0 or later recommended)
 
 ---
 
