@@ -2,6 +2,6 @@
     "BASE_URL": "https://localhost:5121",
     "ENDPOINTS": {
       "getShifts": "/Shift/GetEmployeeShifts/:Date",
-      "addShift": "/Shift/AddShift"
+      "getRoles": "/Roles/GetRoles/:EmployeeId"
     }
   }

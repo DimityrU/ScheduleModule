@@ -16,8 +16,4 @@
     <ProjectReference Include="..\ScheduleModule.Repositories.Shared\ScheduleModule.Repositories.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="MapperProfiles\" />
-  </ItemGroup>
-
 </Project>

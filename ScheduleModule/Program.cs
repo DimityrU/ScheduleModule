@@ -17,12 +17,17 @@ builder.Services.AddDbContext<ScheduleContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ScheduleContext"));
 });
 
-builder.Services.AddScoped<IShiftsRepository, ShiftsRepository>();
 builder.Services.AddScoped<IShiftService, ShiftService>();
+builder.Services.AddScoped<IRolesService, RolesService>();
+
+builder.Services.AddScoped<IShiftsRepository, ShiftsRepository>();
+builder.Services.AddScoped<IRolesRepository, RolesRepository>();
 
 var config = new MapperConfiguration(c => {
     c.AddProfile<ShiftProfile>();
     c.AddProfile<ShiftDTOProfile>();
+    c.AddProfile<RoleProfile>();
+    c.AddProfile<RoleDTOProfile>();
 });
 
 builder.Services.AddSingleton<IMapper>(_ => config.CreateMapper());

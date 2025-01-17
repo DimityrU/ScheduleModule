@@ -53,10 +53,19 @@ function createTable() {
               const shiftFormatted = `${shift.roleName}: ${shift.startHour.substring(0, 5)} - ${shift.endHour.substring(0, 5)}`;
 
               const shiftElement = document.createElement("div");
-              shiftElement.innerHTML = `<a href="shift-details.html?id=${shift.shiftId}" class="shift-link">${shiftFormatted}</a>`;
+              shiftElement.innerHTML = `<a href="../shift-details/shift-details.html?id=${shift.shiftId}&employeeId=${employee.employeeId}&employeeName=${employee.fullName}&roleName=${shift.roleName}&date=${date}&startHour=${shift.startHour}&endHour=${shift.endHour}" class="shift-link">${shiftFormatted}</a>`;
               cell.appendChild(shiftElement);
             });
           }
+
+          const addShiftButton = document.createElement("button");
+          addShiftButton.classList.add("btn", "btn-primary", "mt-2");
+          addShiftButton.textContent = "Add Shift";
+          addShiftButton.onclick = () => {
+            window.location.href = `../shift-details/shift-details.html?employeeId=${employee.employeeId}&date=${date}&employeeName=${employee.fullName}`;
+          };
+
+          cell.appendChild(addShiftButton);
 
           row.appendChild(cell);
         });

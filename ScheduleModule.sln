@@ -21,13 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule.Repositories
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleModule.DomainModels", "ScheduleModule.DomainModels\ScheduleModule.DomainModels.csproj", "{E937C9B0-EB00-4D9F-9CB3-D3AD7DB64CE4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLMigrationScripts", "SQLMigrationScripts", "{24573AAE-2DBF-4D46-8F83-6BB0FED4DFD3}"
-	ProjectSection(SolutionItems) = preProject
-		01.FourthEmployeesSchedule_Schema.sql = 01.FourthEmployeesSchedule_Schema.sql
-		02.FourthEmployeesSchedule_Data.sql = 02.FourthEmployeesSchedule_Data.sql
-	EndProjectSection
-EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ScheduleModuleClient", "ScheduleModuleClient\ScheduleModuleClient.esproj", "{32B5D6D4-656F-4B22-B788-8D68A0F94DCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLMigrationScripts", "SQLMigrationScripts", "{046E6B83-76EF-4376-B9F7-76B691BF24FA}"
+	ProjectSection(SolutionItems) = preProject
+		SQLMigrationScripts\01.FourthEmployeesSchedule_Schema.sql = SQLMigrationScripts\01.FourthEmployeesSchedule_Schema.sql
+		SQLMigrationScripts\02.FourthEmployeesSchedule_Data.sql = SQLMigrationScripts\02.FourthEmployeesSchedule_Data.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
