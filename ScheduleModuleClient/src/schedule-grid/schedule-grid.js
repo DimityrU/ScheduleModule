@@ -44,10 +44,22 @@ function createTable() {
         employeeCell.textContent = employee.fullName;
         row.appendChild(employeeCell);
 
+      
+
         dates.forEach(date => {
           const cell = document.createElement("td");
-          const workDay = employee.workDays.find(day => day.date === date);
 
+          const addShiftButton = document.createElement("button");
+          addShiftButton.classList.add("btn", "btn-primary", "btn-sm");
+          addShiftButton.textContent = "+";
+          addShiftButton.onclick = () => {
+            window.location.href = `../shift-details/shift-details.html?employeeId=${employee.employeeId}&date=${date}&employeeName=${employee.fullName}`;
+          };
+
+          cell.appendChild(addShiftButton);
+
+
+          const workDay = employee.workDays.find(day => day.date === date);
           if (workDay) {
             workDay.shifts.forEach(shift => {
               const shiftFormatted = `${shift.roleName}: ${shift.startHour.substring(0, 5)} - ${shift.endHour.substring(0, 5)}`;
@@ -57,15 +69,6 @@ function createTable() {
               cell.appendChild(shiftElement);
             });
           }
-
-          const addShiftButton = document.createElement("button");
-          addShiftButton.classList.add("btn", "btn-primary", "mt-2");
-          addShiftButton.textContent = "Add Shift";
-          addShiftButton.onclick = () => {
-            window.location.href = `../shift-details/shift-details.html?employeeId=${employee.employeeId}&date=${date}&employeeName=${employee.fullName}`;
-          };
-
-          cell.appendChild(addShiftButton);
 
           row.appendChild(cell);
         });

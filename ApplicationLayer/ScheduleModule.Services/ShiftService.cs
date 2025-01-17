@@ -55,8 +55,8 @@ public class ShiftService(IShiftsRepository shiftsRepository, IEmployeesReposito
                             RoleName = shift.RoleName,
                             StartHour = shift.StartHour,
                             EndHour = shift.EndHour
-                        }).ToList()
-                    }).ToList()
+                        }).OrderBy(x => x.StartHour).ToList()
+                    }).OrderBy(x => x.Date).ToList()
             });
     }
 }
