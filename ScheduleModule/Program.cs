@@ -22,12 +22,14 @@ builder.Services.AddScoped<IRolesService, RolesService>();
 
 builder.Services.AddScoped<IShiftsRepository, ShiftsRepository>();
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
+builder.Services.AddScoped<IEmployeesRepository, EmployeesRepository>();
 
 var config = new MapperConfiguration(c => {
     c.AddProfile<ShiftProfile>();
     c.AddProfile<ShiftDTOProfile>();
     c.AddProfile<RoleProfile>();
     c.AddProfile<RoleDTOProfile>();
+    c.AddProfile<EmployeeProfile>();
 });
 
 builder.Services.AddSingleton<IMapper>(_ => config.CreateMapper());

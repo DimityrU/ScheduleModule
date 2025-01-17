@@ -7,7 +7,7 @@ using ScheduleModule.Services.Shared;
 
 namespace ScheduleModule.Services;
 
-public class ShiftService(IShiftsRepository shiftsRepository, IMapper mapper) : IShiftService
+public class ShiftService(IShiftsRepository shiftsRepository, IEmployeesRepository employeesRepository, IMapper mapper) : IShiftService
 {
     public async Task<GetEmployeeShiftsResponse> GetEmployeeShifts(DateOnly date)
     {
@@ -21,9 +21,17 @@ public class ShiftService(IShiftsRepository shiftsRepository, IMapper mapper) : 
 
         var shifts = await shiftsRepository.GetEmployeeShifts(date, null);
 
-        var employees = GroupShiftsByEmployee(shifts);
+        var employeesWithShifts = GroupShiftsByEmployee(shifts).ToList();
 
-        response.Employees = mapper.Map<List<EmployeeDTO>>(employees);
+        var allEmployees = (await employeesRepository.GetAll()).ToList();
+
+        foreach (var employee in allEmployees)
+        {
+            if (employeesWithShifts.All(e => e.EmployeeId != employee.EmployeeId))
+                employeesWithShifts.Add(employee);
+        }
+
+        response.Employees = mapper.Map<List<EmployeeDTO>>(employeesWithShifts);
 
         return response;
     }
