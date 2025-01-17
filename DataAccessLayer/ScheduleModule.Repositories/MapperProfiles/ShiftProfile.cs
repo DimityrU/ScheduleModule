@@ -6,7 +6,7 @@ public class ShiftProfile : Profile
 {
     public ShiftProfile()
     {
-        CreateMap<DomainModels.Shift, Entities.uspGetShiftsForWeekResult>().ReverseMap();
+        CreateMap<DomainModels.ShiftEmployee, Entities.uspGetShiftsForWeekResult>().ReverseMap();
     }
 
 }

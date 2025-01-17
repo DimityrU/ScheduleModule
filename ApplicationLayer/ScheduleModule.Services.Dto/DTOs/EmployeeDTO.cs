@@ -3,4 +3,4 @@
 public record EmployeeDTO(
     Guid EmployeeId,
     string FullName,
-    List<WorkDayDTO> workDays);
+    List<WorkDayDTO> WorkDays);

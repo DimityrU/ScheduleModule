@@ -2,4 +2,4 @@
 
 public record WorkDayDTO(
     DateOnly? Date,
-    List<ShiftDTO> shifts);
+    List<ShiftDTO> Shifts);

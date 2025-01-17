@@ -10,16 +10,9 @@ public class ShiftDTOProfile : Profile
     {
         CreateMap<ShiftDTO, Shift>().ReverseMap();
 
-        CreateMap<WorkDayDTO, WorkDay>()
-            .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
-            .ForMember(dest => dest.Shifts, opt => opt.MapFrom(src => src.shifts))
-            .ReverseMap();
+        CreateMap<WorkDayDTO, WorkDay>().ReverseMap();
 
-        CreateMap<EmployeeDTO, Employee>()
-            .ForMember(dest => dest.EmployeeId, opt => opt.MapFrom(src => src.EmployeeId))
-            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
-            .ForMember(dest => dest.WorkDays, opt => opt.MapFrom(src => src.workDays))
-            .ReverseMap();
+        CreateMap<EmployeeDTO, Employee>().ReverseMap();
     }
 
 }

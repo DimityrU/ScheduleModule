@@ -22,17 +22,24 @@ public class ShiftService(IShiftsRepository shiftsRepository, IMapper mapper) : 
         var shifts = await shiftsRepository.GetEmployeeShifts(date, null);
 
         var employees = shifts
-            .GroupBy(shift => new { shift.EmployeeId, shift.FullName })
-            .Select(group => new Employee()
+            .GroupBy(shiftEmployee => new ShiftEmployee
+            {
+                EmployeeId = shiftEmployee.EmployeeId, 
+                FullName = shiftEmployee.FullName 
+            })
+            .Select(group => new Employee
             {
                 FullName = group.Key.FullName,
                 EmployeeId = group.Key.EmployeeId,
                 WorkDays = group
-                    .GroupBy(g => g.Date)
-                    .Select(dayGroup => new WorkDay
+                    .GroupBy(g => new ShiftsDate
                     {
-                        Date = dayGroup.Key,
-                        Shifts = dayGroup.Select(shift => new Shift
+                        Date = g.Date
+                    })
+                    .Select(workDay => new WorkDay
+                    {
+                        Date = workDay.Key.Date,
+                        Shifts = workDay.Select(shift => new Shift
                         {
                             ShiftId = shift.ShiftId,
                             RoleName = shift.RoleName,

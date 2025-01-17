@@ -22,11 +22,11 @@ public class ShiftsRepository(ScheduleContext context, IMapper mapper) : IShifts
         await context.Shifts.Where(s => s.ShiftId == shiftId).ExecuteDeleteAsync();
     }
 
-    public async Task<IEnumerable<DomainModels.Shift>> GetEmployeeShifts(DateOnly date, Guid? employeeId)
+    public async Task<IEnumerable<DomainModels.ShiftEmployee>> GetEmployeeShifts(DateOnly date, Guid? employeeId)
     {
         var shifts = await context.Procedures.uspGetShiftsForWeekAsync(date);
 
-        return mapper.Map<IEnumerable<DomainModels.Shift>>(shifts);
+        return mapper.Map<IEnumerable<DomainModels.ShiftEmployee>>(shifts);
     }
 
     public async Task<DomainModels.Shift> UpdateShift(DomainModels.Shift shift, Guid roleToEmployee)

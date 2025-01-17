@@ -8,7 +8,7 @@ namespace ScheduleModule.Controllers
     [Route("[controller]")]
     public class ShiftController(IShiftService shiftService) : ControllerBase
     {
-        [HttpGet("GetEmployeeShifts/{date:datetime}")]
+        [HttpGet("GetEmployeeShifts/{date}")]
         public Task<GetEmployeeShifts> GetEmployeeShifts(DateOnly date)
         {
             var result = shiftService.GetEmployeeShifts(date);
