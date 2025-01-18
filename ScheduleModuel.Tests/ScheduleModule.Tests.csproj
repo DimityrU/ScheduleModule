@@ -34,7 +34,6 @@
   <ItemGroup>
     <Folder Include="Shift\Grouping\" />
     <Folder Include="Shift\Overlapping\" />
-    <Folder Include="Shift\Update\" />
   </ItemGroup>
 
   <ItemGroup>

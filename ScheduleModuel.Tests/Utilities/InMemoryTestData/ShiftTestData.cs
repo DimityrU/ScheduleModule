@@ -39,7 +39,7 @@ public static class ShiftTestData
         EndHour = EndTime,
     };
 
-    public static readonly DomainModels.Shift AddedShift = new()
+    public static readonly DomainModels.Shift SavedShift = new()
     {
         ShiftId = ShiftId,
         RoleName = RoleTestData.Name,

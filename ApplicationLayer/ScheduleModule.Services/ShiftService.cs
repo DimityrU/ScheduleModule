@@ -53,28 +53,15 @@ public class ShiftService(IShiftsRepository shiftsRepository,
         }
         var shift = mapper.Map<ShiftEmployee>(request.Shift);
 
-        var isOverlapping = await IsOverlapping(shift);
-        if (isOverlapping)
+        var validateShiftResponse = await ValidateShift(shift, request.Shift.RoleId);
+
+        if (validateShiftResponse.HasError)
         {
-            response.AddError("Shift overlaps with another shift");
+            response.AddError(validateShiftResponse.ErrorMessage);
             return response;
         }
 
-        if (shift.StartHour > shift.EndHour)
-        {
-            response.AddError("Start hour must be before end hour");
-            return response;
-        }
-
-        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(shift.EmployeeId, request.Shift.RoleId);
-
-        if (roleToEmployeeId == Guid.Empty)
-        {
-            response.AddError("Invalid Role for this employee");
-            return response;
-        }
-
-        var savedShift = await shiftsRepository.AddShift(shift, roleToEmployeeId);
+        var savedShift = await shiftsRepository.AddShift(shift, validateShiftResponse.RoleToEmployee);
 
         response.Shift = mapper.Map<ShiftDTO>(savedShift);
 
@@ -93,28 +80,15 @@ public class ShiftService(IShiftsRepository shiftsRepository,
         }
         var shift = mapper.Map<ShiftEmployee>(request.Shift);
 
-        if (shift.StartHour > shift.EndHour)
+        var validateShiftResponse = await ValidateShift(shift, request.Shift.RoleId);
+
+        if (validateShiftResponse.HasError)
         {
-            response.AddError("Start hour must be before end hour");
+            response.AddError(validateShiftResponse.ErrorMessage);
             return response;
         }
 
-        var isOverlapping = await IsOverlapping(shift);
-        if(isOverlapping)
-        {
-            response.AddError("Shift overlaps with another shift");
-            return response;
-        }
-
-        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(shift.EmployeeId, request.Shift.RoleId);
-
-        if (roleToEmployeeId == Guid.Empty)
-        {
-            response.AddError("Invalid Role for this employee");
-            return response;
-        }
-
-        var savedShift = await shiftsRepository.UpdateShift(shift, roleToEmployeeId);
+        var savedShift = await shiftsRepository.UpdateShift(shift, validateShiftResponse.RoleToEmployee);
 
         response.Shift = mapper.Map<ShiftDTO>(savedShift);
 
@@ -196,5 +170,35 @@ public class ShiftService(IShiftsRepository shiftsRepository,
         }
 
         return false;
+    }
+
+    private async Task<RoleToEmployeeResponse> ValidateShift(ShiftEmployee shift, Guid roleId)
+    {
+        var response = new RoleToEmployeeResponse();
+
+        if (shift.StartHour > shift.EndHour)
+        {
+            response.AddError("Start hour must be before end hour");
+            return response;
+        }
+
+        var isOverlapping = await IsOverlapping(shift);
+        if (isOverlapping)
+        {
+            response.AddError("Shift overlaps with another shift");
+            return response;
+        }
+
+        var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(shift.EmployeeId, roleId);
+
+        if (roleToEmployeeId == Guid.Empty)
+        {
+            response.AddError("Invalid Role for this employee");
+            return response;
+        }
+
+        response.RoleToEmployee = roleToEmployeeId;
+
+        return response;
     }
 }
