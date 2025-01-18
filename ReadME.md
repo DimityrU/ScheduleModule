@@ -25,7 +25,7 @@ In ScheduleModule\ScheduleModule, update the connection string in appsettings.js
 Execute 'dotnet run' in ScheduleModule\ScheduleModule. The API will be available at `https://localhost:5121/swagger/index.html`.
 
 ### 3. Install the required packages
-Execute (as Administrator) 'npm install' in ScheduleModule\ScheduleModuleClient.
-Execute (as Administrator) 'npm install -g http-server' in ScheduleModule\ScheduleModuleClient.
-Execute (as Administrator) 'http-server' in ScheduleModule\ScheduleModuleClient. The client will be available at `http://localhost:8080`.
+Execute (CMD) 'npm install' in ScheduleModule\ScheduleModuleClient.
+Execute (CMD) 'npm install -g http-server' in ScheduleModule\ScheduleModuleClient.
+Execute (CMD) 'http-server' in ScheduleModule\ScheduleModuleClient. The client will be available at `http://localhost:8080`.
 If API is running in a different port, update the API URL in ScheduleModule\ScheduleModuleClient\rest-config.js - ${BASE_URL}.
