@@ -15,14 +15,14 @@ public partial class GetEmployeesShiftsTests
             Employees = [
                 new EmployeeDTO(EmployeeTestData.EmployeeId, EmployeeTestData.Name,
                     [
-                        new WorkDayDTO(EmployeeTestData.Monday,
+                        new WorkDayDTO(ShiftTestData.Monday,
                             [
                                     new ShiftDTO(ShiftTestData.ShiftId, RoleTestData.Name, ShiftTestData.StartTime, ShiftTestData.EndTime)
                             ])
                     ]),
                 new EmployeeDTO(EmployeeTestData.SecondEmployeeId, EmployeeTestData.Name,
                 [
-                    new WorkDayDTO(EmployeeTestData.Thursday,
+                    new WorkDayDTO(ShiftTestData.Thursday,
                     [
                         new ShiftDTO(ShiftTestData.SecondShiftId, RoleTestData.Name, ShiftTestData.StartTime, ShiftTestData.EndTime)
                     ])
@@ -42,7 +42,7 @@ public partial class GetEmployeesShiftsTests
             Employees = [
                 new EmployeeDTO(EmployeeTestData.EmployeeId, EmployeeTestData.Name,
                 [
-                    new WorkDayDTO(EmployeeTestData.Monday,
+                    new WorkDayDTO(ShiftTestData.Monday,
                     [
                         new ShiftDTO(ShiftTestData.ShiftId, RoleTestData.Name, ShiftTestData.StartTime, ShiftTestData.EndTime)
                     ])

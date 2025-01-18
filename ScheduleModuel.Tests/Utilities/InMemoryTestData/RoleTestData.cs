@@ -5,6 +5,7 @@ public static class RoleTestData
     public static readonly Guid RoleId = new("8D2A12EC-568B-4EBD-9EBE-86FD12193F90");
     public static readonly Guid RoleManagerId = new("A4417176-E49D-4693-B410-21F095553765");
     public static readonly Guid RoleDevId = new("6A367F66-46B1-44E2-8A04-371D8DC7ED26");
+    public static readonly Guid RoleToEmployeeId = new("6678E1F1-672E-41B0-810E-9C0A25FF40E3");
 
     public const string Name = "Name Mock";
     public const string Manager = "Manager";

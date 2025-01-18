@@ -35,12 +35,11 @@
     <Folder Include="Shift\Grouping\" />
     <Folder Include="Shift\Overlapping\" />
     <Folder Include="Shift\Update\" />
-    <Folder Include="Shift\Add\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Shift\Delete\DeleteShiftTests.TestCases.cs">
-      <DependentUpon>DeleteShiftTests.cs</DependentUpon>
+    <Compile Update="Shift\Add\SaveShiftTests.TestCases.cs">
+      <DependentUpon>$([System.String]::Copy(%(Filename)).Replace('.TestCases', '')).cs</DependentUpon>
     </Compile>
   </ItemGroup>
 
