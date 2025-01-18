@@ -24,7 +24,7 @@ public class ShiftService(IShiftsRepository shiftsRepository,
             return response;
         }
 
-        var shifts = await shiftsRepository.GetEmployeeShifts(date, null);
+        var shifts = await shiftsRepository.GetShifts(date);
 
         var employeesWithShifts = GroupShiftsByEmployee(shifts).ToList();
 
@@ -53,7 +53,12 @@ public class ShiftService(IShiftsRepository shiftsRepository,
         }
         var shift = mapper.Map<ShiftEmployee>(request.Shift);
 
-        //Overlapping shifts validation
+        var isOverlapping = await IsOverlapping(shift);
+        if (isOverlapping)
+        {
+            response.AddError("Shift overlaps with another shift");
+            return response;
+        }
 
         if (shift.StartHour > shift.EndHour)
         {
@@ -94,7 +99,12 @@ public class ShiftService(IShiftsRepository shiftsRepository,
             return response;
         }
 
-        //Overlapping shifts validation
+        var isOverlapping = await IsOverlapping(shift);
+        if(isOverlapping)
+        {
+            response.AddError("Shift overlaps with another shift");
+            return response;
+        }
 
         var roleToEmployeeId = await rolesRepository.GetRolesToEmployeesId(shift.EmployeeId, request.Shift.RoleId);
 
@@ -148,5 +158,43 @@ public class ShiftService(IShiftsRepository shiftsRepository,
                         }).OrderBy(x => x.StartHour).ToList()
                     }).OrderBy(x => x.Date).ToList()
             });
+    }
+
+    private async Task<bool> IsOverlapping(ShiftEmployee shiftEmployee)
+    {
+        var shifts = (await shiftsRepository.GetEmployeeShifts(shiftEmployee)).ToList();
+
+        if(shifts.Count == 0) return false;
+        
+        foreach (var shift in shifts)
+        {
+            if (shift.StartHour == shiftEmployee.StartHour
+                || shift.EndHour == shiftEmployee.EndHour
+                || shift.StartHour == shiftEmployee.EndHour
+                || shift.EndHour == shiftEmployee.StartHour)
+            {
+                return true;
+            }
+
+            if (shift.StartHour > shiftEmployee.StartHour &&
+                shift.StartHour < shiftEmployee.EndHour)
+            {
+                return true;
+            }
+
+            if (shift.EndHour > shiftEmployee.StartHour &&
+                shift.EndHour < shiftEmployee.EndHour)
+            {
+                return true;
+            }
+
+            if (shift.StartHour < shiftEmployee.StartHour &&
+                shift.EndHour > shiftEmployee.EndHour)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
