@@ -21,6 +21,7 @@ public static class ShiftTestData
 
     public static readonly DateOnly NoShiftDay = new(2025, 2, 19);
     public static readonly DateOnly FullShiftDay = new(2025, 2, 20);
+    public static readonly DateOnly WorkShiftDay = new(2025, 3, 20);
 
     public static readonly DateOnly MondayWithShifts = new(2025, 1, 20);
 
@@ -29,6 +30,13 @@ public static class ShiftTestData
         Date = FullShiftDay,
         StartHour = new TimeOnly(0, 0),
         EndHour = new TimeOnly(23, 59),
+    };
+
+    public static readonly DomainModels.ShiftEmployee WorkShift = new()
+    {
+        Date = WorkShiftDay,
+        StartHour = new TimeOnly(9, 0),
+        EndHour = new TimeOnly(17, 0),
     };
 
     public static readonly DomainModels.ShiftEmployee Shift = new()

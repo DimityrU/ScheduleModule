@@ -40,6 +40,7 @@ public static class DataAccessMock
             mock.Setup(x => x.GetShifts(new DateOnly(2025, 1, 27))).ReturnsAsync([ShiftTestData.Shift]);
             mock.Setup(x => x.GetEmployeeShifts(It.IsAny<ShiftEmployee>())).ReturnsAsync([]);
             mock.Setup(x => x.GetEmployeeShifts(It.Is<ShiftEmployee>(x => x.Date == ShiftTestData.FullShiftDay))).ReturnsAsync([ShiftTestData.FullShift]);
+            mock.Setup(x => x.GetEmployeeShifts(It.Is<ShiftEmployee>(x => x.Date == ShiftTestData.WorkShiftDay))).ReturnsAsync([ShiftTestData.WorkShift]);
             mock.Setup(x => x.AddShift(It.IsAny<ShiftEmployee>(), It.IsAny<Guid>())).ReturnsAsync(ShiftTestData.SavedShift);
             mock.Setup(x => x.UpdateShift(It.IsAny<ShiftEmployee>(), It.IsAny<Guid>())).ReturnsAsync(ShiftTestData.SavedShift);
             return mock;
