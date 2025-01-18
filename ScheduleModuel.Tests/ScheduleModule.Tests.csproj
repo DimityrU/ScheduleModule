@@ -36,7 +36,6 @@
     <Folder Include="Shift\Overlapping\" />
     <Folder Include="Shift\Update\" />
     <Folder Include="Shift\Add\" />
-    <Folder Include="Utitlities\InMemoryTestData\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,6 +22,7 @@ public static class DataAccessMock
         get
         {
             Mock<IEmployeesRepository> mock = new();
+            mock.Setup(x => x.GetAll()).ReturnsAsync(EmployeeTestData.GetEmployees);
             return mock;
         }
     }
@@ -31,6 +32,8 @@ public static class DataAccessMock
         get
         {
             Mock<IShiftsRepository> mock = new();
+            mock.Setup(x => x.GetShifts(new DateOnly(2025, 1, 20))).ReturnsAsync(ShiftTestData.GetShifts);
+            mock.Setup(x => x.GetShifts(new DateOnly(2025, 1, 27))).ReturnsAsync([ShiftTestData.Shift]);
             return mock;
         }
     }
