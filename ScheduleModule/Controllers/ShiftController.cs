@@ -10,10 +10,10 @@ namespace ScheduleModule.Controllers
     [Route("[controller]")]
     public class ShiftController(IShiftService shiftService) : ControllerBase
     {
-        [HttpGet("GetEmployeeShifts/{date}")]
-        public async Task<GetEmployeeShiftsResponse> GetEmployeeShifts([FromRoute] DateOnly date)
+        [HttpGet("GetEmployeesShifts/{date}")]
+        public async Task<GetEmployeeShiftsResponse> GetEmployeesShifts([FromRoute] DateOnly date)
         {
-            var result = await shiftService.GetEmployeeShifts(date);
+            var result = await shiftService.GetEmployeesShifts(date);
 
             return result;
         }

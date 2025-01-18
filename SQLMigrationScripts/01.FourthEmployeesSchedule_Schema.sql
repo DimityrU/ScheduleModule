@@ -52,7 +52,7 @@ GO
 
 PRINT 'Creating stored procedure Shifts...';
 GO
-CREATE PROCEDURE [dbo].[spGetShiftsForWeek]
+CREATE PROCEDURE [dbo].[uspGetShiftsForWeek]
     @FirstDateOfTheWeek DATE, 
     @EmployeeId uniqueidentifier = NULL
 AS
@@ -60,6 +60,7 @@ BEGIN
     SELECT 
         s.ShiftId AS ShiftId,
         s.Date,
+        e.EmployeeId,
         CONCAT(e.FirstName, ' ', e.LastName) AS FullName,
         ro.RoleName,
 		s.StartHour,

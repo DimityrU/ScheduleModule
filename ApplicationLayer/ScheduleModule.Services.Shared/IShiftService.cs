@@ -6,7 +6,7 @@ namespace ScheduleModule.Services.Shared;
 
 public interface IShiftService
 {
-    Task<GetEmployeeShiftsResponse> GetEmployeeShifts(DateOnly date);
+    Task<GetEmployeeShiftsResponse> GetEmployeesShifts(DateOnly date);
 
     Task<SaveShiftResponse> SaveShift(SaveShiftRequest request);
 

@@ -14,7 +14,7 @@ public class ShiftService(IShiftsRepository shiftsRepository,
     IRolesRepository rolesRepository,
     IMapper mapper) : IShiftService
 {
-    public async Task<GetEmployeeShiftsResponse> GetEmployeeShifts(DateOnly date)
+    public async Task<GetEmployeeShiftsResponse> GetEmployeesShifts(DateOnly date)
     {
         var response = new GetEmployeeShiftsResponse();
 

@@ -32,7 +32,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Shift\Grouping\" />
+    <Folder Include="Shift\Overlapping\" />
+    <Folder Include="Shift\Update\" />
+    <Folder Include="Shift\Add\" />
     <Folder Include="Utitlities\InMemoryTestData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Shift\Delete\DeleteShiftTests.TestCases.cs">
+      <DependentUpon>DeleteShiftTests.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
