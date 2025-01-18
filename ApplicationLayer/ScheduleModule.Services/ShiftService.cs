@@ -131,7 +131,7 @@ public class ShiftService(IShiftsRepository shiftsRepository,
                             EndHour = shift.EndHour
                         }).OrderBy(x => x.StartHour).ToList()
                     }).OrderBy(x => x.Date).ToList()
-            });
+            }).OrderBy(x => x.FullName);
     }
 
     private async Task<bool> IsOverlapping(ShiftEmployee shiftEmployee)
