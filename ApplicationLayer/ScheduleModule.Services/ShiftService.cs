@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ScheduleModule.DomainModels;
 using ScheduleModule.Repositories.Shared;
+using ScheduleModule.Services.Dto;
 using ScheduleModule.Services.Dto.DTOs;
 using ScheduleModule.Services.Dto.Incoming;
 using ScheduleModule.Services.Dto.Outgoing;
@@ -106,6 +107,21 @@ public class ShiftService(IShiftsRepository shiftsRepository,
         var savedShift = await shiftsRepository.UpdateShift(shift, roleToEmployeeId);
 
         response.Shift = mapper.Map<ShiftDTO>(savedShift);
+
+        return response;
+    }
+
+    public async Task<BaseResponse> DeleteShift(Guid shiftId)
+    {
+        var response = new BaseResponse();
+
+        if (shiftId == Guid.Empty)
+        {
+            response.AddError("Invalid request");
+            return response;
+        }
+
+        await shiftsRepository.DeleteShift(shiftId);
 
         return response;
     }

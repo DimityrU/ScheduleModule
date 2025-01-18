@@ -11,6 +11,10 @@ let shift = new Shift(urlParams);
 
 const pageMode = shift.shiftId ? 'edit' : 'create';
 
+if(pageMode == 'create') {
+  document.getElementById('deleteButton').disabled = true;
+}
+
 document.getElementById('employeeName').value = shift.employeeName;
 document.getElementById('shiftDate').value = shift.date;
 
@@ -33,7 +37,7 @@ fetchRoles().then(res => {
 document.getElementById('startHour').value = shift.startHour || '07:00';
 document.getElementById('endHour').value = shift.endHour || '23:00';
 
-document.getElementById('backButton').addEventListener('click', (event) => {  
+document.getElementById('backButton').addEventListener('click', () => {  
     window.location.href = '../schedule-grid/schedule-grid.html';
 });
 
@@ -67,6 +71,15 @@ document.getElementById('saveButton').addEventListener('click', async () => {
       await api.put('editShift', request);
     }
   }
+
+  window.location.href = '../schedule-grid/schedule-grid.html';
+});
+
+document.getElementById('deleteButton').addEventListener('click', async () => {  
+
+  await api.loadConfig();
+
+  await api.delete('deleteShift', {ShiftId: shift.shiftId});
 
   window.location.href = '../schedule-grid/schedule-grid.html';
 });

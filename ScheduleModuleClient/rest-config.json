@@ -4,6 +4,7 @@
       "getShifts": "/Shift/GetEmployeeShifts/:Date",
       "getRoles": "/Roles/GetRoles/:EmployeeId",
       "saveShift": "/Shift/Save",
-      "editShift": "/Shift/Edit"
+      "editShift": "/Shift/Edit",
+      "deleteShift": "/Shift/Delete/:ShiftId"
     }
   }

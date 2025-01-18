@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ScheduleModule.Services.Dto;
 using ScheduleModule.Services.Dto.Incoming;
 using ScheduleModule.Services.Dto.Outgoing;
 using ScheduleModule.Services.Shared;
@@ -31,6 +32,14 @@ namespace ScheduleModule.Controllers
             var result = await shiftService.EditShift(request);
 
             return result;
+        }
+
+        [HttpDelete("Delete/{shiftId:guid}")]
+        public async Task<BaseResponse> DeleteShift([FromRoute] Guid shiftId)
+        {
+            var response = await shiftService.DeleteShift(shiftId);
+
+            return response;
         }
     }
 }
